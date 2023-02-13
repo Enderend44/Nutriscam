@@ -8,7 +8,9 @@ data = pd.read_csv(file, parse_dates=['Start', 'End'])
 output = './gantt.png'
 
 
-## 1. DATA PREPARATION ##
+###########################
+##  1. DATA PREPARATION  ##
+###########################
 
 # project start date
 proj_start = data.Start.min()
@@ -19,7 +21,6 @@ data['end_num'] = (data.End-proj_start).dt.days
 # days between start and end of each task
 data['days_start_to_end'] = data.end_num - data.start_num
 
-
 def color(row):
     c_dict = {
         'WP1':'#E64646',
@@ -29,12 +30,13 @@ def color(row):
 
 data['color'] = data.apply(color, axis=1)
 
-
 # days between start and current progression of each task
 data['current_num'] = (data.days_start_to_end * data.Completion)
 
 
-## 2. PLOT ##
+##########################
+##  2. LEGEND AND PLOT  ##
+##########################
 
 fig, ax = plt.subplots(1, figsize=(16,6))
 
@@ -59,5 +61,8 @@ ax.set_xticks(xticks_minor, minor=True)
 ax.set_xticklabels(xticks_labels[::3])
 
 
+####################
 ## 3. SAVE FIGURE ##
+####################
+
 plt.savefig(output, dpi=300, bbox_inches='tight')
