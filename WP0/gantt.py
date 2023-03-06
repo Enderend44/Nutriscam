@@ -26,9 +26,10 @@ DATA['days_start_to_end'] = DATA.end_num - DATA.start_num
 
 def color(row):
     c_dict = {
-        'WP1':'#E64646',
-        'WP2':'#E69646',
-        'WP3':'#34D05C'}
+        'WP0':'#34D0E6', # blue
+        'WP1':'#E64646', # red
+        'WP2':'#E69646', # orange
+        'WP3':'#34D05C'} # green
     return c_dict[row['Group']]
 
 DATA['color'] = DATA.apply(color, axis=1)
@@ -56,7 +57,7 @@ for idx, row in DATA.iterrows():
     
 # grid
 legend_elements = [Patch(facecolor=DATA.color.unique()[i], label=DATA.Group.unique()[i])  for i in range(len(DATA.Group.unique()))]
-plt.legend(handles=legend_elements)
+plt.legend(handles=legend_elements[::-1], loc='upper right')
 
 # xticks and labels 
 n_days = 7 # number of days between each tick
