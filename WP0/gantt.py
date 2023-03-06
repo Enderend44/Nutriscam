@@ -12,6 +12,9 @@ output = './gantt.png'
 ##  1. DATA PREPARATION  ##
 ###########################
 
+# reverse order of rows to have the last task at the bottom
+DATA = DATA.iloc[::-1].reset_index(drop=True)
+
 # project start date
 proj_start = data.Start.min()
 # number of days from project start to task start
