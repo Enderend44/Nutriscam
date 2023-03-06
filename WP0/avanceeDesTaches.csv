@@ -1,15 +1,12 @@
 Task,Group,Start,End,Completion
 
-tâche1,WP1,2023-01-23,2023-02-20,1.0
-tâche2,WP2,2023-02-01,2023-02-25,0.6
-tâche3,WP3,2023-02-13,2023-03-05,0.2
-tâche4,WP1,2023-02-20,2023-02-25,0.1
-tâche5,WP2,2023-02-25,2023-03-10,0.0
-tâche6,WP3,2023-03-05,2023-03-15,0.0
+Choix et récupération des données,WP1,2023-01-23,2023-03-06,0.9
+Nettoyage des données,WP1,2023-03-06,2023-03-27,0.0
+Annotations en lien avec l'ontologie,WP1,2023-03-27,2023-04-10,0.0
 
-tâche7,WP1,2023-01-23,2023-02-20,1.0
-tâche8,WP2,2023-02-01,2023-02-25,0.6
-tâche9,WP3,2023-02-13,2023-03-05,0.2
-tâche10,WP1,2023-02-20,2023-02-25,0.1
-tâche11,WP2,2023-02-25,2023-03-10,0.0
-tâche12,WP3,2023-03-05,2023-03-15,0.0
+Prototype d'ontologie pour les aliments,WP2,2023-01-23,2023-03-06,0.9
+Ontologie avec les données traitées,WP2,2023-03-06,2023-04-10,0.0
+
+Prise en main Neo4j,WP3,2023-01-23,2023-02-06,1.0
+Réalisation de requêtes,WP3,2023-02-06,2023-03-06,1.0
+Travail sur les données,WP3,2023-03-06,2023-04-10,0.0
