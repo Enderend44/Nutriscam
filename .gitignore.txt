@@ -1,0 +1,4 @@
+
+# Ignorer les fichiers csv
+
+*.csv
