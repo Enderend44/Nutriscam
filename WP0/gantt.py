@@ -61,13 +61,14 @@ legend_elements = [Patch(facecolor=data.color.unique()[i], label=data.Group.uniq
 plt.legend(handles=legend_elements[::-1], loc='upper right')
 
 # xticks and labels 
-n_days = 7 # number of days between each tick
-xticks = np.arange(0, data.end_num.max()+1, n_days)
-xticks_labels = pd.date_range(proj_start, end=data.End.max()).strftime("%d/%m")
+xticks = np.unique(data[['start_num', 'end_num']].values)
+xticks_labels = [proj_start + pd.Timedelta(days=int(x)) for x in xticks]
+xticks_labels = [x.strftime('%d/%m') for x in xticks_labels]
 xticks_minor = np.arange(0, data.end_num.max()+1, 1)
+
 ax.set_xticks(xticks)
 ax.set_xticks(xticks_minor, minor=True)
-ax.set_xticklabels(xticks_labels[::n_days])
+ax.set_xticklabels(xticks_labels)
 
 
 ####################
