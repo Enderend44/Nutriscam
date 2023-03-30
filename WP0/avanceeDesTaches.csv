@@ -1,16 +1,16 @@
 Task,Group,Start,End,Completion
 
-Documentation du projet,WP0,2023-02-02,2023-03-27,0.5
-Création d'un mode d'emploi,WP0,2023-03-27,2023-04-10,0.0
+Documentation du projet,WP0,2023-02-02,2023-03-20,0.8
+Création d'un mode d'emploi,WP0,2023-03-20,2023-04-10,0.0
 
 Récupération des données,WP1,2023-02-02,2023-02-14,1.0
-Choix des données,WP1,2023-02-14,2023-03-06,0.9
-Nettoyage des données,WP1,2023-03-06,2023-03-27,0.0
+Choix des données,WP1,2023-02-14,2023-03-06,1.0
+Nettoyage des données,WP1,2023-03-06,2023-03-27,1.0
 Annotations en lien avec l'ontologie,WP1,2023-03-27,2023-04-10,0.0
 
-Prototype d'ontologie pour les aliments,WP2,2023-02-02,2023-03-06,0.9
-Ontologie avec les données traitées,WP2,2023-03-06,2023-04-10,0.0
+Prototype d'ontologie pour les aliments,WP2,2023-02-02,2023-03-20,0.85
+Ontologie avec les données traitées,WP2,2023-03-20,2023-04-10,0.0
 
 Prise en main Neo4j,WP3,2023-02-02,2023-02-14,1.0
-Réalisation de requêtes,WP3,2023-02-14,2023-03-06,1.0
-Travail sur les données,WP3,2023-03-06,2023-04-10,0.0
+Réalisation de requêtes,WP3,2023-02-14,2023-03-13,1.0
+Travail sur les données,WP3,2023-03-13,2023-04-10,0.0
