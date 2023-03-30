@@ -35,7 +35,26 @@ total = df1.isnull().sum().sort_values(ascending=False)
 pd.DataFrame(data={'Missing': total}).head(2)
 
 
+df2[Inconnu_features]=df2[Inconnu_features].fillna('Inconnu')
+df2[zero_features]=df2[zero_features].fillna(0)
+# df2[mode_features]=df2[mode_features].fillna(df2.mode().iloc[0])
 
+total = df2.isnull().sum().sort_values(ascending=False)
+pd.DataFrame(data={'Missing': total}).head(2)
+
+df3[Inconnu_features]=df3[Inconnu_features].fillna('Inconnu')
+df3[zero_features]=df3[zero_features].fillna(0)
+# df3[mode_features]=df3[mode_features].fillna(df3.mode().iloc[0])
+
+total = df4.isnull().sum().sort_values(ascending=False)
+pd.DataFrame(data={'Missing': total}).head(2)
+
+df4[Inconnu_features]=df4[Inconnu_features].fillna('Inconnu')
+df4[zero_features]=df4[zero_features].fillna(0)
+# df4[mode_features]=df4[mode_features].fillna(df4.mode().iloc[0])
+
+total = df2.isnull().sum().sort_values(ascending=False)
+pd.DataFrame(data={'Missing': total}).head(2)
 
 # on enregistre les 4 dataframes en csv
 df1.to_csv('Tri1.csv', sep=',', index=False)
