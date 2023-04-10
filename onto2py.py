@@ -6,15 +6,27 @@ onto = get_ontology("Nutriscam.owl").load()
 
 import csv
 
+# On recherche les IRI des classes à partir de leurs labels
+def find_class_by_label(ontology, label):
+    for cls in ontology.classes():
+        if label.lower() in [l.lower() for l in cls.label]:
+            return cls
+    return None
+# On crée un dictionnaire pour stocker IRI des classes et leurs labels
+classes = {}
+for cls in onto.classes():
+    classes[cls.label[0]] = cls
+
+# On crée une fonction pour ajouter des instances à partir d'un fichier CSV
 def add_instances_from_csv(file_path):
     with open(file_path, 'r', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             # Créez les instances pour chaque classe
-            produit = onto.Produit(namespace=row['code'])
-            valeur_nutritionnelle = onto.ValeurNutritionnelle(namespace=row['code']+"_vn")
-            nutriscore = onto.Nutriscore(namespace=row['code']+"_ns")
-            ecoscore = onto.Ecoscore(namespace=row['code']+"_es")
+            produit = classes['Produit']()
+            valeur_nutritionnelle = classes['ValeurNutritionnelle']()
+            nutriscore = classes['Nutriscore']()
+            ecoscore = classes['Ecoscore']()
 
             # Remplissez les propriétés de données pour chaque instance
             produit.code = row['code']
@@ -47,4 +59,7 @@ def add_instances_from_csv(file_path):
             produit.aNutriscore = [nutriscore]
             produit.aEcoscore = [ecoscore]
 
-add_instances_from_csv('Tri1.csv')
+add_instances_from_csv('Triavance.csv')
+
+# Enregistrez votre ontologie avec les nouvelles instances
+onto.save(file = "Test2.owl", format = "rdfxml")
