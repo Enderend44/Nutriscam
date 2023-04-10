@@ -79,11 +79,43 @@ iri_to_class_name = {
 
 # On peut maintenant utilser iri_to_class_name pour récupérer le nom de la classe à partir de son IRI et ainsi creer les instances des classes 
 
-def   create_instances ( ontology ,   iri_to_class_name ):
-            for   iri   in   iri_to_class_name . keys ():
-                ontology . create_entity ( iri_to_class_name [ iri ],   iri )
-            return   ontology
+# Parcours du dictionnaire iri_to_class_name pour attribuer les labels RDFS
+for iri, class_name in iri_to_class_name.items():
+    # Trouver la classe correspondante dans l'ontologie
+    cls = onto.search_one(iri=iri)
+    
+    # Attribuer le nom de la classe en tant que label RDFS
+    if cls:
+        cls.label = class_name
 
-# on sauvegarde l'ontologie
-ontology   =   create_instances ( onto ,   iri_to_class_name )
-ontology . save ( "test.owl" )
+# Charger l'ontologie
+onto = get_ontology("path/to/your/ontology.owl").load()
+
+# Lire le fichier CSV
+data = pd.read_csv("Tri1.csv")
+
+# Fonction pour trouver une classe à partir de son label
+def find_class_by_label(ontology, label):
+    for cls in ontology.classes():
+        if label.lower() in [l.lower() for l in cls.label]:
+            return cls
+    return None
+
+# Parcourir les données du fichier CSV et créer des instances des classes correspondantes
+for index, row in data.iterrows():
+    product_name = row['product_name']
+
+    # Trouver la classe correspondant à la colonne "pnns_groups_1"
+    pnns_groups_1_label = row['pnns_groups_1']
+    pnns_groups_1_class = find_class_by_label(onto, pnns_groups_1_label)
+
+    # Si la classe existe, créer une instance
+    if pnns_groups_1_class:
+        instance = pnns_groups_1_class(product_name)
+        # Vous pouvez également ajouter d'autres attributs à l'instance ici, si nécessaire
+
+    # Répétez ce processus pour d'autres colonnes/labels, en créant des instances pour chaque classe trouvée
+
+# Sauvegarder l'ontologie peuplée dans un nouveau fichier
+onto.save("path/to/your/populated_ontology.owl")
+
