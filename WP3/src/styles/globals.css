@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.button-1 {
+	@apply bg-[#FFDCC8] w-fit px-5 py-3 rounded-lg hover:bg-[#]
+}
+
+.button-2 {
+	@apply bg-[#CBEBDC] w-fit px-5 py-3 rounded-lg hover:bg-[#]
+}
